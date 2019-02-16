@@ -1,0 +1,67 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int D,M,Y;
+	int d,m,y;
+	cout<<"Enter date DD-MM-YYYY " ,
+	cin>>D>>M>>Y;
+	//INPUT CHECKING
+   if((D>31) || (D<01))
+        {cout<<"INVAID ENTRY. DD>00 AND DD<31"; return 0;}
+    if((M>12)||(M<01))
+        {cout<<"INVALID ENTRY. MM>00 AND MM<12"; return 0;}
+    if((Y>2999)||(Y<1600))
+        {cout<<"INVALID ENTRY. yyyy>2999 AND yyyy<1600"; return 0;}
+    if ((M==02)&&(Y%4!=00))
+        { if(D>28) {cout<<"INVALID ENTRY.year is not s leap year"; return 0;}}
+    //STEP1: DATE +YEAR   
+   int x,X;
+   x=Y%100;
+   X=x+D;
+   //step2:
+   int z,Z;
+   z=x/4;
+   Z=z+X;
+   //step3
+   int w,W;
+   {
+        if((M==01)||(M==10)) w=0;
+        if((M==02)||(M==11)||(M==03)) w=03;
+        if((M==04)||(M==07)) w=06;
+        if(M==05) w=01;
+        if(M==8) w=02;
+        if((M==9)||(M==12)) w=05;
+        if(M==06) w=04;
+    W=Z+w;
+   }
+   int f,F;
+   {
+       if((Y>1600)&&(Y<1699)) f=06;
+       if((Y>1700)&&(Y<1799)) f=04;
+       if((Y>1800)&&(Y<1899)) f=02;
+       if((Y>1900)&&(Y<1999)) f=00;
+       if((Y>2000)&&(Y<2999)) f=06;
+       F=W+f;
+   }
+   int h;
+   h=F%7;
+   {
+       if(h==01) cout<<"Monday";
+       if(h==02) cout<<"T";
+       if(h==03) cout<<"W";if(h==04) cout<<"thu";if(h==05) cout<<"F";if(h==06) cout<<"Sat";
+       if((h==0)||(h==07)) cout<<"Sun";
+   }
+   
+    return 0;
+}
